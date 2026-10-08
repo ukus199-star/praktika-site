@@ -1,0 +1,24 @@
+# Конфигурация деплоя сайта практики на Amvera Cloud.
+#
+# Так же, как у теста (udobnost/amvera.yml): сервер Node, next build
+# собирает, next start запускает. Базы и постоянного хранилища у сайта нет -
+# заявки в фазе 4 пойдут транзитом, без хранения у нас.
+#
+# environment: node       - работает сервер Node.
+# toolchain                - чем ставить зависимости и какая версия Node.
+# build.additionalCommands - сборка после установки зависимостей.
+# run.command              - запуск через скрипт start из package.json.
+# run.containerPort        - next start по умолчанию слушает 3000.
+
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 22
+
+build:
+  additionalCommands: npm run build
+
+run:
+  command: npm run start
+  containerPort: 3000

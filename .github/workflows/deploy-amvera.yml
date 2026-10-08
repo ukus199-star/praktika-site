@@ -1,0 +1,63 @@
+# Отправка кода сайта практики на Amvera руками GitHub.
+#
+# Тот же путь, что у теста (udobnost/.github/workflows/deploy-amvera.yml):
+# имя git.amvera.ru режется в сети владелицы проекта, у серверов GitHub
+# такого ограничения нет.
+#
+# Цепочка: правка -> bash scripts/deploy-praktika.sh отправляет в
+# praktika-site -> этот файл отправляет дальше на Amvera -> Amvera собирает
+# и обновляет сайт.
+#
+# Что нужно в настройках репозитория praktika-site (Settings -> Secrets and
+# variables -> Actions):
+#   секрет AMVERA_SSH_KEY  - закрытая часть ключа SSH; открытая - в личном
+#                            кабинете Amvera;
+#   переменная AMVERA_REPO - адрес репозитория проекта Amvera по SSH, из
+#                            кабинета: проект, раздел «Репозиторий», строка
+#                            «Использовать как основной репозиторий по SSH».
+# Адрес вынесен в переменную, а не вписан сюда: он известен только после
+# того, как проект создан в кабинете.
+
+name: Отправить на Amvera
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  otpravit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Забрать код
+        uses: actions/checkout@v4
+        with:
+          # Вся история: Amvera принимает обычный push, ему нужна связная
+          # цепочка коммитов.
+          fetch-depth: 0
+
+      - name: Отправить в репозиторий Amvera
+        env:
+          AMVERA_SSH_KEY: ${{ secrets.AMVERA_SSH_KEY }}
+          AMVERA_REPO: ${{ vars.AMVERA_REPO }}
+        run: |
+          set -e
+
+          if [ -z "$AMVERA_SSH_KEY" ] || [ -z "$AMVERA_REPO" ]; then
+            echo "Нет секрета AMVERA_SSH_KEY или переменной AMVERA_REPO."
+            echo "Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+          mkdir -p ~/.ssh
+          printf '%s\n' "$AMVERA_SSH_KEY" > ~/.ssh/amvera
+          chmod 600 ~/.ssh/amvera
+
+          # accept-new: машина GitHub каждый раз новая и сервер Amvera видит
+          # впервые. Уходит код публичного репозитория, закрытый ключ при
+          # входе по SSH не передаётся.
+          git -c core.sshCommand="ssh -i ~/.ssh/amvera -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new" \
+              push --force "$AMVERA_REPO" HEAD:master
+
+          echo "Отправлено. Amvera собирает ветку master и запускает сборку сама."

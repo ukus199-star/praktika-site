@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* Шрифт Manrope. Едет пакетом из node_modules, а не с Google Fonts - как
+   Inter у теста: сборка идёт на серверах Amvera в России, и обращение к
+   Google оттуда может не пройти. Variable-версия - один файл на все
+   начертания, кириллица в нём есть. */
+@import "@fontsource-variable/manrope";
+
+/* ── Палитра ────────────────────────────────────────────────────────────────
+   Один в один из бренд-гайда: business/assets/brend-gaid.md. Новый цвет
+   сюда - только после того, как он появился в утверждённом макете и записан
+   в гайд. Контраст пар проверен там же.                                    */
+@theme {
+  --font-sans: "Manrope Variable", system-ui, sans-serif;
+
+  --color-krem: #f6eedf;          /* фон страницы, текст на оливе */
+  --color-tekst: #1e1b16;         /* заголовки, основной текст */
+  --color-podpis: #5a5245;        /* подписи, надзаголовки */
+  --color-abzac: #3e382f;         /* длинный текст */
+  --color-oliva: #3f4a2e;         /* кнопки, плашки, океан */
+  --color-priglush: #d9dccb;      /* приглушённый текст на оливе */
+  --color-solnce: #f2ae3d;        /* только солнце и круги */
+  --color-solnce-2: #e9a233;      /* второй тон секторов колеса */
+
+  /* Служебные оттенки - раздел «Служебные оттенки» гайда, 08.10.2026. */
+  --color-pole: #fffcf6;          /* заливка поля формы */
+  --color-ramka: #93866e;         /* рамка поля: 3,1:1 к фону */
+  --color-primer: #6e6656;        /* пример в поле: 5,5:1 */
+  --color-kartochka: #efe4cf;     /* карточка на креме */
+  --color-zaglushka: #e3d7c2;     /* место под фото и видео */
+  --color-liniya: #d8cdb8;        /* разделитель, только украшение */
+  --color-abzac-oliva: #e7e9dd;   /* абзац на оливе */
+  --color-podpis-oliva: #4a5338;  /* подпись на кремовой кнопке */
+  --color-solnce-tekst: #3a2a10;  /* подписи на секторах колеса */
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Шапка не липкая, но якорь не должен вставать вплотную к краю. */
+  scroll-padding-top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--color-krem);
+  color: var(--color-tekst);
+}
+
+/* Базовые правила - в слое base. Вне слоя они перебили бы классы Tailwind
+   (те лежат в слое utilities, а стиль без слоя всегда сильнее): так ссылка-
+   кнопка «Пройти тест» становилась кремовой на кремовом. */
+@layer base {
+  a {
+    color: inherit;
+  }
+  input::placeholder {
+    color: var(--color-primer);
+  }
+}
+
+/* Фокус с клавиатуры виден на любом фоне: олива на креме, крем на оливе. */
+:focus-visible {
+  outline: 3px solid var(--color-oliva);
+  outline-offset: 3px;
+}
+.na-olive :focus-visible {
+  outline-color: var(--color-krem);
+}
+
+/* Карусели листаются пальцем, полоса прокрутки не нужна. */
+.bez-polosy {
+  scrollbar-width: none;
+}
+.bez-polosy::-webkit-scrollbar {
+  display: none;
+}
