@@ -66,7 +66,7 @@ function Foto() {
       width={1050}
       height={1400}
       loading="lazy"
-      className="h-[420px] w-full rounded-[18px] object-cover object-[50%_30%] lg:h-[600px] lg:rounded-[20px]"
+      className="h-[420px] w-full rounded-[18px] object-cover object-top lg:h-[600px] lg:rounded-[20px]"
     />
   );
 }
