@@ -1,0 +1,34 @@
+<!doctype html><html lang="ru"><meta charset="utf-8">
+<style>
+@font-face{font-family:M;src:url(manrope-cyrillic-wght-normal.woff2) format("woff2");font-weight:200 800;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:M;src:url(manrope-latin-wght-normal.woff2) format("woff2");font-weight:200 800}
+*{margin:0;box-sizing:border-box}
+html,body{width:1280px;height:720px;overflow:hidden}
+body{background:#f6eedf;font-family:M,sans-serif;color:#1e1b16;position:relative}
+.tekst{position:absolute;left:84px;top:0;bottom:0;width:590px;display:flex;flex-direction:column;justify-content:center}
+h1{font-weight:800;font-size:var(--r,132px);line-height:.95;letter-spacing:-.035em;text-wrap:balance}
+.chast{margin-top:22px;font-weight:600;font-size:46px;letter-spacing:-.01em;color:#5a5245}
+.podkast{position:absolute;left:84px;bottom:56px;font-weight:700;font-size:28px;color:#3f4a2e;letter-spacing:-.005em}
+.podkast span{font-weight:500;color:#5a5245}
+.solnce{position:absolute;width:560px;height:560px;border-radius:50%;background:#f2ae3d;left:742px;top:-118px}
+.foto{position:absolute;border-radius:50%;overflow:hidden;background:#e3d7c2;box-shadow:0 18px 40px -18px rgba(30,27,22,.45)}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.u{width:330px;height:330px;left:720px;top:96px;border:10px solid #f6eedf}
+.n{width:300px;height:300px;left:952px;top:322px;border:10px solid #f6eedf}
+.imya{position:absolute;font-weight:700;font-size:26px;color:#3f4a2e}
+.iu{left:760px;top:448px}.in{left:1000px;top:640px}
+</style>
+<div class="solnce"></div>
+<div class="foto u"><img src="U.png"></div>
+<div class="foto n"><img src="N.png"></div>
+<div class="tekst"><h1 id="t">Тема</h1><div class="chast" id="c">часть 1</div></div>
+<div class="podkast">Подкаст «Твоя опора» <span>· Ульяна Кустова и Ната</span></div>
+<script>
+const q=new URLSearchParams(location.search);
+document.getElementById("t").textContent=q.get("t");
+const c=q.get("c"); if(c) document.getElementById("c").textContent=c; else document.getElementById("c").remove();
+document.querySelector(".u img").src=q.get("u")||(q.get("n")+"-U.png");
+document.querySelector(".n img").src=q.get("nn")||(q.get("n")+"-N.png");
+const h=document.getElementById("t"); let r=132; h.style.whiteSpace=q.get("t").includes(" ")?"normal":"nowrap";
+document.fonts.ready.then(()=>{ while(h.scrollWidth>590&&r>60){r-=2;h.style.fontSize=r+"px";} document.body.dataset.gotovo=1; });
+</script>
