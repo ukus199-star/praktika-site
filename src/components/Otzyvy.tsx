@@ -45,10 +45,12 @@ const pleer = (v: Vypusk) => `${PLEER}&id=${v.id}&hash=${v.hash}&hd=3`;
 function Karusel({
   zagolovok,
   id,
+  podzagolovok,
   children,
 }: {
   zagolovok: string;
   id: string;
+  podzagolovok?: ReactNode;
   children: ReactNode;
 }) {
   const lenta = useRef<HTMLDivElement>(null);
@@ -77,6 +79,7 @@ function Karusel({
           </button>
         </div>
       </div>
+      {podzagolovok}
       <div
         ref={lenta}
         role="region"
@@ -208,7 +211,24 @@ export function Otzyvy() {
             <Otzyv key={n} tekst={tekst} />
           ))}
         </Karusel>
-        <Karusel zagolovok={"Подкаст «Твоя\u00a0опора»"} id="video">
+        <Karusel
+          zagolovok={"Подкаст «Твоя\u00a0опора»"}
+          id="video"
+          podzagolovok={
+            // Подпись утвердила владелица 12.10.2026. Строку Наты она
+            // попросила оставить её словами, от первого лица.
+            <div className="-mt-1 flex max-w-[62ch] flex-col gap-3 text-base leading-[1.55] text-abzac lg:-mt-4 lg:text-lg">
+              <p className="m-0">
+                Подкаст, который мы ведём вместе с Натой. Говорим о поддержке, тревоге, злости и любви к себе - честно и по-дружески.
+              </p>
+              <p className="m-0 text-[15px] lg:text-base">
+                <span className="font-bold text-tekst">Ульяна Кустова</span> - гештальт-терапевт
+                <br />
+                <span className="font-bold text-tekst">Ната</span> - йога-практик, преподаю онлайн по всему миру📍
+              </p>
+            </div>
+          }
+        >
           {VIDEO.map((v, i) => (
             <Video key={v.id} v={v} nomer={i + 1} igraet={igraet === v.id} zapustit={() => setIgraet(v.id)} />
           ))}
