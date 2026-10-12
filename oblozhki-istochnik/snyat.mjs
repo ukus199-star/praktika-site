@@ -1,11 +1,11 @@
 // node snyat.mjs - снять все обложки 1280x720 из shablon.html
 import { spawn } from "node:child_process"; import http from "node:http"; import { readFileSync, writeFileSync, mkdtempSync, existsSync } from "node:fs"; import { tmpdir } from "node:os"; import { join, extname } from "node:path";
 const V = [
- ["1","Мне не нужен совет","Чем поддержка отличается от помощи","Поддержка · часть 1","1-U-4.png","1-U-6.png"],["2","Выговориться и успокоиться","Зачем рассказывать о себе незнакомым людям","Поддержка · часть 2","2-U-3.png","2-U-6.png"],
- ["3","Слишком многого хочу","Как тревога связана с желанием жить в полную силу","Тревога · часть 1","3-U-3.png","3-N-1.png"],["4","А что самое страшное?","Как замедлиться и вернуться к себе, когда тревожно","Тревога · часть 2","4-U-3.png","4-N-3.png"],
- ["5","Агрессия не враг","Почему без агрессии невозможно жить","Агрессия · часть 1","5-U-4.png","5-N-5.png"],["6","Злость, которая разрушает","Как заметить свою злость и прожить её бережно","Агрессия · часть 2","6-U-2.png","5-N-5.png"],
- ["7","Голос мамы в голове","Откуда берётся отношение к себе","Любовь к себе","7-U-6.png","7-N.png"]];
-const T = { ".html":"text/html; charset=utf-8", ".png":"image/png", ".woff2":"font/woff2" };
+ ["1","Мне не нужен совет","Чем поддержка отличается от помощи","Поддержка · часть 1","ulyana.jpg","1-U-6.png"],["2","Выговориться и успокоиться","Зачем рассказывать о себе незнакомым людям","Поддержка · часть 2","ulyana.jpg","2-U-6.png"],
+ ["3","Слишком многого хочу","Как тревога связана с желанием жить в полную силу","Тревога · часть 1","ulyana.jpg","3-N-1.png"],["4","А что самое страшное?","Как замедлиться и вернуться к себе, когда тревожно","Тревога · часть 2","ulyana.jpg","4-N-3.png"],
+ ["5","Агрессия не враг","Почему без агрессии невозможно жить","Агрессия · часть 1","ulyana.jpg","5-N-5.png"],["6","Злость, которая разрушает","Как заметить свою злость и прожить её бережно","Агрессия · часть 2","ulyana.jpg","5-N-5.png"],
+ ["7","Голос мамы в голове","Откуда берётся отношение к себе","Любовь к себе","ulyana.jpg","7-N.png"]];
+const T = { ".html":"text/html; charset=utf-8", ".png":"image/png", ".jpg":"image/jpeg", ".woff2":"font/woff2" };
 const srv = http.createServer((q,s)=>{ const f="."+decodeURIComponent(new URL(q.url,"http://x").pathname); if(!existsSync(f)){s.statusCode=404;return s.end();} s.setHeader("content-type",T[extname(f)]||"application/octet-stream"); s.end(readFileSync(f)); }).listen(8766);
 const port=9352; const chrome=spawn("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",["--headless=new",`--remote-debugging-port=${port}`,`--user-data-dir=${mkdtempSync(join(tmpdir(),"chr-"))}`,"about:blank"]);
 const pauza=(ms)=>new Promise(r=>setTimeout(r,ms));
