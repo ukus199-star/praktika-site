@@ -219,7 +219,7 @@ export function Otzyvy() {
             // попросила оставить её словами, от первого лица.
             <div className="-mt-1 flex max-w-[62ch] flex-col gap-3 text-base leading-[1.55] text-abzac lg:-mt-4 lg:text-lg">
               <p className="m-0">
-                Подкаст, который мы ведём вместе с Натой. Говорим о поддержке, тревоге, злости и любви к себе - честно и по-дружески.
+                Подкаст, который мы ведём вместе с Натой. Говорим о частых психологических темах - честно и по-дружески.
               </p>
               <p className="m-0 text-[15px] lg:text-base">
                 <span className="font-bold text-tekst">Ульяна Кустова</span> - гештальт-терапевт
