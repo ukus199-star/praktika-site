@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Значок вкладки: солнце над оливковой полосой, как на первом экране. -->
+  <rect width="32" height="32" rx="7" fill="#f6eedf"/>
+  <clipPath id="k"><rect width="32" height="32" rx="7"/></clipPath>
+  <g clip-path="url(#k)">
+    <circle cx="16" cy="19" r="10" fill="#f2ae3d"/>
+    <rect y="21" width="32" height="11" fill="#3f4a2e"/>
+  </g>
+</svg>
