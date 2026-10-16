@@ -95,10 +95,10 @@ export function PervyEkran() {
           />
           <div className="absolute top-[0.69cqw] left-[5.56cqw] flex w-[44.44cqw] flex-col gap-[clamp(14px,1.39cqw,20px)]">
             <div className="text-sm text-podpis xl:text-[15px]">
-              Гештальт-терапевт · онлайн и очно в Москве
+              Онлайн и очно в Москве
             </div>
             <h1 className="m-0 text-[4.58cqw] leading-[1.04] font-extrabold tracking-[-0.025em]">
-              Терапия для профи, уставших быть <Udobnymi />
+              Гештальт-терапевт для взрослых, уставших угождать и быть <Udobnymi />
             </h1>
             <p className="m-0 max-w-[540px] text-[clamp(16px,1.25cqw,18px)] leading-[1.55] text-abzac">
               Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет.
@@ -115,10 +115,10 @@ export function PervyEkran() {
       <div className="lg:hidden">
         <div className="mx-auto flex max-w-[640px] flex-col gap-4 px-4 pt-5">
           <div className="text-[13px] text-podpis">
-            Гештальт-терапевт · онлайн и очно в Москве
+            Онлайн и очно в Москве
           </div>
           <h1 className="m-0 text-[38px] leading-[1.08] font-extrabold tracking-[-0.02em]">
-            Терапия для профи, уставших быть <Udobnymi />
+            Гештальт-терапевт для взрослых, уставших угождать и быть <Udobnymi />
           </h1>
           <p className="m-0 text-base leading-normal text-abzac">
             Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет.
