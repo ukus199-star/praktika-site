@@ -1,11 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { ADRES_SAYTA } from "@/data/sayt";
 
 const nazvanie = "Ульяна Кустова - гештальт-терапевт";
 const opisanie =
   "Гештальт-терапевт для взрослых, уставших угождать и быть удобными. Онлайн и очно в Москве.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(ADRES_SAYTA),
   title: nazvanie,
   description: opisanie,
   openGraph: {
@@ -14,10 +16,6 @@ export const metadata: Metadata = {
     locale: "ru_RU",
     type: "website",
   },
-  // Пока сайт живёт на временном адресе, поисковикам его показывать рано:
-  // на нём заглушки вместо фото и отзывов. Снять в фазе 5, при переезде на
-  // kustova-psy.ru.
-  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

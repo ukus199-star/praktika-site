@@ -19,10 +19,15 @@ export function rubli(summa: number): string {
   return `${summa.toLocaleString("ru-RU").replace(/\s/g, " ")} ₽`;
 }
 
-/** Тест «Насколько вы удобны». Публикуется адрес kustova-psy.ru/test
- *  (фаза 0а плана сайта); когда тест переедет на test.kustova-psy.ru, этот
- *  адрес перенаправит туда сам - здесь ничего менять не придётся. */
-export const SSYLKA_TEST = "https://kustova-psy.ru/test";
+/** Сайт практики - корень домена с фазы 5. */
+export const ADRES_SAYTA = "https://kustova-psy.ru";
+
+/** Где живёт тест «Насколько вы удобны» с фазы 5. В постах по-прежнему
+ *  публикуется kustova-psy.ru/test - его перенаправляет сюда src/proxy.ts.
+ *  Ссылки самого сайта ведут сюда напрямую, без лишнего перехода. */
+export const ADRES_TESTA = "https://test.kustova-psy.ru";
+
+export const SSYLKA_TEST = ADRES_TESTA;
 
 export const TELEGRAM = {
   imya: "@ukusto",
@@ -33,10 +38,10 @@ export const TELEGRAM = {
  *  приходят заявки (в макете личная). */
 export const POCHTA = "ukus199@gmail.com";
 
-/** Документы пока живут на сайте теста. Переедут вместе с доменом (фаза 5). */
+/** Документы живут на сайте теста: их согласия дают в форме почты там. */
 export const DOKUMENTY = {
-  politika: "https://kustova-psy.ru/politika",
-  soglasie: "https://kustova-psy.ru/soglasie",
+  politika: ADRES_TESTA + "/politika",
+  soglasie: ADRES_TESTA + "/soglasie",
 };
 
 export const INN = "772825329072";
