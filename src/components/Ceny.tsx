@@ -4,8 +4,9 @@ import { CENY, DLITELNOST_VSTRECHI, rubli } from "@/data/sayt";
 // 05.10.2026. Суммы - только из data/sayt.ts (правило репо 1).
 //
 // Отличие от макета: в нём солнце 520 px заходило под абзац о первой
-// встрече. Здесь оно 400 px, а под абзацем 300 px: край солнца в 100 px
-// от текста (правило 3 бренд-гайда). Найдено при вёрстке 08.10.2026.
+// встрече. Здесь оно 320 px, а под абзацем 220 px: край солнца в 100 px
+// от текста (правило 3 бренд-гайда). Было 400 и 300 - уменьшено 20.10.2026,
+// когда сжимали пустоту по замечанию респондента.
 
 const FORMATY = [
   { nazvanie: "Онлайн", gde: "по видеосвязи", ceny: CENY.onlayn },
@@ -17,9 +18,9 @@ export function Ceny() {
     <section id="ceny" className="relative overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute bottom-[-140px] left-[-120px] h-[280px] w-[280px] rounded-full bg-solnce lg:bottom-[-200px] lg:left-[calc(50%-880px)] lg:h-[400px] lg:w-[400px]"
+        className="absolute bottom-[-140px] left-[-120px] h-[240px] w-[240px] rounded-full bg-solnce lg:bottom-[-200px] lg:left-[calc(50%-840px)] lg:h-[320px] lg:w-[320px]"
       />
-      <div className="relative mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-6 px-4 pt-12 pb-[240px] lg:gap-8 lg:px-[min(5.56vw,80px)] lg:pt-[100px] lg:pb-[300px]">
+      <div className="relative mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-6 px-4 pt-12 pb-[200px] lg:gap-8 lg:px-[min(5.56vw,80px)] lg:pt-[72px] lg:pb-[220px]">
         <h2 className="m-0 text-[28px] leading-[1.15] font-extrabold tracking-[-0.015em] lg:text-[46px] lg:leading-[1.1] lg:tracking-[-0.02em]">
           Формат и цены
         </h2>

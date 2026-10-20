@@ -3,12 +3,12 @@
 // сканам сертификатов, присланным владелицей 08.10.2026 (лежат в
 // public/sertifikaty/). Живое фото - public/foto-obo-mne.jpg.
 
-type Stroka = { gody: string; gde: string; chto: string; skan?: string };
+type Stroka = { gody: string; gde: string; chto: string; skan?: string; skanNadpis?: string };
 
 const OBRAZOVANIE: Stroka[] = [
   // Диплом МГУ прислан 09.10.2026. Подпись «Социальная психология» -
   // решение владелицы (в дипломе: «Психология служебной деятельности»).
-  { gody: "2015-2021", gde: "МГУ, факультет психологии", chto: "Социальная психология", skan: "/sertifikaty/mgu-diplom-2021.jpg" },
+  { gody: "2015-2021", gde: "МГУ, факультет психологии", chto: "Социальная психология", skan: "/sertifikaty/mgu-diplom-2021.jpg", skanNadpis: "диплом" },
   {
     gody: "2018-2021",
     gde: "Московский институт гештальт-терапии и консультирования",
@@ -34,21 +34,29 @@ function Spisok({ zagolovok, stroki }: { zagolovok: string; stroki: Stroka[] }) 
     <div className="flex flex-col">
       <div className="mb-1.5 text-[13px] text-podpis lg:text-[15px]">{zagolovok}</div>
       {stroki.map((o) => (
-        <div key={o.gody + o.gde} className="grid grid-cols-[110px_minmax(0,1fr)] gap-3 border-t border-liniya py-3.5">
+        <div key={o.gody + o.gde} className="grid grid-cols-[110px_minmax(0,1fr)] gap-3 border-t border-liniya py-2.5">
           <div className="text-[15px] font-bold lg:text-base">{o.gody}</div>
           <div className="flex flex-col gap-0.5">
             <div className="text-[15px] font-semibold lg:text-base">{o.gde}</div>
-            <div className="text-sm text-podpis lg:text-[15px]">{o.chto}</div>
-            {o.skan && (
-              <a
-                href={o.skan}
-                target="_blank"
-                rel="noopener"
-                className="flex min-h-11 items-center self-start text-[13px] text-oliva underline underline-offset-4 lg:text-sm"
-              >
-                Посмотреть сертификат
-              </a>
-            )}
+            {/* Ссылка на скан - в строке с часами, а не отдельной строкой:
+                так список короче на треть (20.10.2026). Высота нажатия
+                прежняя, 44 px, за счёт полей ссылки. */}
+            <div className="text-sm text-podpis lg:text-[15px]">
+              {o.chto}
+              {o.skan && (
+                <>
+                  {" · "}
+                  <a
+                    href={o.skan}
+                    target="_blank"
+                    rel="noopener"
+                    className="-my-3 inline-block py-3 whitespace-nowrap text-oliva underline underline-offset-4"
+                  >
+                    {o.skanNadpis ?? "сертификат"}
+                  </a>
+                </>
+              )}
+            </div>
           </div>
         </div>
       ))}
@@ -66,8 +74,27 @@ function Foto() {
       width={1050}
       height={1400}
       loading="lazy"
-      className="h-[420px] w-full rounded-[18px] object-cover object-top lg:h-[600px] lg:rounded-[20px]"
+      className="h-[420px] w-full rounded-[18px] object-cover object-top lg:h-[480px] lg:rounded-[20px]"
     />
+  );
+}
+
+// На компьютере стоит под рассказом слева, на телефоне - после списков:
+// справа список образования длиннее текста, и под текстом оставалась пустая
+// колонка (замечание респондента, 20.10.2026).
+function Supervizia({ klass }: { klass: string }) {
+  return (
+    <div className={`flex-col ${klass}`}>
+      <div className="border-t border-liniya pt-3.5 text-[15px] font-semibold lg:text-base">
+        Регулярно хожу на супервизию и в личную терапию.
+      </div>
+      {/* Из Taplink, решение владелицы 08.10.2026. */}
+      <p className="m-0 mt-3.5 border-t border-liniya pt-3.5 text-[15px] leading-[1.6] text-abzac lg:text-base">
+        Для меня важна связь с профессиональным сообществом: я часто участвую в
+        международных научно-практических конференциях и интенсивах по
+        гештальт-терапии и другим подходам.
+      </p>
+    </div>
   );
 }
 
@@ -76,17 +103,7 @@ function Obrazovanie() {
     <div className="flex flex-col gap-7">
       <Spisok zagolovok="Образование" stroki={OBRAZOVANIE} />
       <Spisok zagolovok="Повышение квалификации" stroki={KVALIFIKACIYA} />
-      <div className="flex flex-col">
-        <div className="border-t border-liniya pt-3.5 text-[15px] font-semibold lg:text-base">
-          Регулярно хожу на супервизию и в личную терапию.
-        </div>
-        {/* Из Taplink, решение владелицы 08.10.2026. */}
-        <p className="m-0 mt-3.5 border-t border-liniya pt-3.5 text-[15px] leading-[1.6] text-abzac lg:text-base">
-          Для меня важна связь с профессиональным сообществом: я часто участвую в
-          международных научно-практических конференциях и интенсивах по
-          гештальт-терапии и другим подходам.
-        </p>
-      </div>
+      <Supervizia klass="flex lg:hidden" />
     </div>
   );
 }
@@ -98,7 +115,7 @@ export function OboMne() {
       {/* Солнца в этом блоке нет - решение владелицы 08.10.2026: у фото оно
           заходило на текст, у верхнего угла сталкивалось с солнцем блока
           «Тест», полукругом внизу «мешает». */}
-      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-[18px] px-4 py-12 lg:flex-row lg:gap-12 xl:gap-24 lg:px-[min(5.56vw,80px)] lg:py-[100px]">
+      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-[18px] px-4 py-12 lg:flex-row lg:gap-12 xl:gap-24 lg:px-[min(5.56vw,80px)] lg:py-[72px]">
         <div className="contents lg:flex lg:flex-1 lg:flex-col lg:gap-5">
           <h2 className="m-0 text-[28px] leading-[1.15] font-extrabold tracking-[-0.015em] lg:mb-2 lg:text-[46px] lg:leading-[1.1] lg:tracking-[-0.02em]">
             Обо мне
@@ -145,6 +162,7 @@ export function OboMne() {
             многое. За ним могут стоять очень разные причины: тревога, утрата и
             горе, другие сложные и важные темы. С ними я тоже работаю.
           </p>
+          <Supervizia klass="hidden lg:mt-4 lg:flex" />
         </div>
         <div className="mt-2.5 flex flex-col gap-7 lg:mt-0 lg:w-[40%] xl:w-[520px] lg:shrink-0">
           <div className="hidden lg:block">

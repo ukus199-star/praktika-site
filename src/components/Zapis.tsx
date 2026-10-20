@@ -89,7 +89,7 @@ function KnopkaTelegram({ klass = "" }: { klass?: string }) {
   return (
     <a
       href={TELEGRAM.ssylka}
-      className={`${klass} flex min-h-[52px] items-center justify-center rounded-[14px] border-2 border-oliva px-6 text-[15px] font-extrabold text-oliva no-underline lg:text-[17px]`}
+      className={`${klass} flex min-h-[52px] items-center justify-center rounded-[14px] bg-oliva px-6 text-[15px] font-extrabold text-krem no-underline lg:text-[17px]`}
     >
       Написать в Telegram · {TELEGRAM.imya}
     </a>
@@ -125,7 +125,7 @@ export function Zapis() {
 
   return (
     <section id="zapis" className="overflow-hidden">
-      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-24 px-4 py-12 lg:flex-row lg:px-[min(5.56vw,80px)] lg:py-[100px]">
+      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-24 px-4 py-12 lg:flex-row lg:px-[min(5.56vw,80px)] lg:py-[72px]">
         <div className="flex flex-col gap-4 lg:w-[52%] xl:w-[600px] lg:shrink-0 lg:gap-5">
           <h2 className="m-0 text-[28px] leading-[1.15] font-extrabold lg:text-[46px] lg:leading-[1.1] lg:tracking-[-0.02em]">
             Записаться на первую встречу
@@ -195,8 +195,8 @@ export function Zapis() {
           <KrugFoto klass="mt-6 h-60 w-60 self-center lg:hidden" />
         </div>
 
-        <div className="hidden flex-1 flex-col items-center justify-center gap-9 lg:flex">
-          <KrugFoto klass="h-[320px] w-[320px] xl:h-[420px] xl:w-[420px]" />
+        <div className="hidden flex-1 flex-col items-center justify-center gap-7 lg:flex">
+          <KrugFoto klass="h-[300px] w-[300px] xl:h-[340px] xl:w-[340px]" />
           <KnopkaTelegram />
         </div>
       </div>

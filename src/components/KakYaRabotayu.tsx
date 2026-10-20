@@ -28,7 +28,7 @@ export function KakYaRabotayu() {
         aria-hidden="true"
         className="absolute top-[-150px] right-[-90px] h-60 w-60 rounded-full bg-solnce lg:top-[-220px] lg:right-[calc(50%-940px)] lg:h-[520px] lg:w-[520px]"
       />
-      <div className="relative mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-12 px-4 pt-32 pb-12 lg:gap-[72px] lg:px-[min(5.56vw,80px)] lg:py-[100px]">
+      <div className="relative mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-12 px-4 pt-32 pb-12 lg:gap-[72px] lg:px-[min(5.56vw,80px)] lg:py-[72px]">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-12 xl:gap-24">
           <div className="flex flex-1 flex-col gap-4 lg:gap-5">
             <h2 className="m-0 text-[28px] leading-[1.15] font-extrabold tracking-[-0.015em] lg:mb-2 lg:text-[46px] lg:leading-[1.1] lg:tracking-[-0.02em]">
@@ -45,7 +45,7 @@ export function KakYaRabotayu() {
               появляется выбор - и силы можно направить на другое.
             </p>
             <p className="my-2 text-2xl leading-tight font-extrabold text-oliva lg:text-[30px] lg:leading-[1.25]">
-              Там, где раньше был автомат, появляется выбор.
+              Там, где раньше был привычный сценарий, появляется выбор.
             </p>
             <h3 className="m-0 mt-3 text-[22px] font-extrabold lg:text-[26px]">
               Путь, который проходите вы

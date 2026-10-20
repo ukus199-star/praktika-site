@@ -13,7 +13,7 @@ export function BlokTest() {
         aria-hidden="true"
         className="absolute right-[-90px] bottom-[-180px] h-[360px] w-[360px] rounded-full bg-solnce lg:right-[calc(50%-780px)] lg:bottom-[-320px] lg:h-[640px] lg:w-[640px]"
       />
-      <div className="relative mx-auto max-w-[1440px] max-lg:max-w-[640px] px-4 pt-12 pb-[260px] lg:px-[min(5.56vw,80px)] lg:py-24">
+      <div className="relative mx-auto max-w-[1440px] max-lg:max-w-[640px] px-4 pt-12 pb-[260px] lg:px-[min(5.56vw,80px)] lg:py-[72px]">
         <div className="flex max-w-[640px] flex-col lg:max-w-[min(640px,52vw)] gap-4 lg:gap-[22px]">
           <div className="text-[13px] text-priglush lg:text-[15px]">Тест · бесплатно</div>
           <h2 className="m-0 text-[28px] leading-[1.15] font-extrabold tracking-[-0.015em] lg:text-[46px] lg:leading-[1.1] lg:tracking-[-0.02em]">

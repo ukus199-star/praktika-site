@@ -195,7 +195,7 @@ function Video({ v, nomer, igraet, zapustit }: { v: Vypusk; nomer: number; igrae
         rel="noopener noreferrer"
         className="flex min-h-11 items-center self-start text-[15px] text-podpis underline underline-offset-4 lg:text-base"
       >
-        Смотреть во VK
+        Смотреть в ВК
       </a>
     </div>
   );
@@ -205,7 +205,7 @@ export function Otzyvy() {
   const [igraet, setIgraet] = useState<number | null>(null);
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-12 px-4 py-12 lg:gap-[76px] lg:px-[min(5.56vw,80px)] lg:py-[100px]">
+      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-12 px-4 py-12 lg:gap-[76px] lg:px-[min(5.56vw,80px)] lg:py-[72px]">
         <Karusel zagolovok="Что говорят клиенты" id="otzyvy">
           {OTZYVY.map((tekst, n) => (
             <Otzyv key={n} tekst={tekst} />

@@ -47,9 +47,6 @@ function Knopki() {
 function Polosa() {
   return (
     <div className="flex flex-col gap-3.5 leading-tight text-krem lg:gap-[clamp(6px,0.83cqw,12px)]">
-      <div className="text-[22px] font-bold lg:text-[clamp(20px,1.67cqw,24px)] lg:tracking-[-0.01em]">
-        жить, а не тащить
-      </div>
       <div className="grid grid-cols-2 gap-x-3 gap-y-2.5 text-[13px] text-priglush lg:flex lg:gap-[2.2cqw] lg:text-sm">
         {CIFRY.map((c) => (
           <div key={c.chislo}>
@@ -101,7 +98,7 @@ export function PervyEkran() {
               Гештальт-терапевт для взрослых, уставших угождать и быть <Udobnymi />
             </h1>
             <p className="m-0 max-w-[540px] text-[clamp(16px,1.25cqw,18px)] leading-[1.55] text-abzac">
-              Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет.
+              Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет
             </p>
             <Knopki />
           </div>
@@ -121,7 +118,7 @@ export function PervyEkran() {
             Гештальт-терапевт для взрослых, уставших угождать и быть <Udobnymi />
           </h1>
           <p className="m-0 text-base leading-normal text-abzac">
-            Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет.
+            Помогаю увидеть, от чего вы устали, и найти то, что вас наполняет
           </p>
           <Knopki />
         </div>

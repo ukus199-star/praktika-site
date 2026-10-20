@@ -1,6 +1,6 @@
 // Блок «Первая встреча и вопросы». Макеты BlokVoprosy и BlokVoprosyTel,
-// правлены 08.10.2026 по разбору Impeccable: солнце в карточке меньше и
-// отодвинуто от текста на 100+ px.
+// правлены 08.10.2026 по разбору Impeccable. Солнце в карточке и пустое место
+// под ним для него убраны 20.10.2026 - решение владелицы: карточка по тексту.
 //
 // Вопросы раскрываются штатными <details>: они работают без JavaScript,
 // с клавиатуры и сами сообщают экранному диктору, открыты или нет.
@@ -16,16 +16,12 @@ const VOPROSY = [
 export function Voprosy() {
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-7 px-4 py-12 lg:flex-row lg:gap-12 xl:gap-20 lg:px-[min(5.56vw,80px)] lg:py-[100px]">
-        <div className="na-olive relative flex flex-col gap-3 self-start overflow-hidden rounded-[20px] bg-oliva p-6 text-krem lg:w-[40%] xl:w-[480px] lg:shrink-0 lg:gap-4 lg:rounded-[22px] lg:p-9">
-          <div
-            aria-hidden="true"
-            className="absolute right-[-50px] bottom-[-50px] h-[100px] w-[100px] rounded-full bg-solnce lg:right-[-60px] lg:bottom-[-60px] lg:h-[140px] lg:w-[140px]"
-          />
-          <h2 className="relative m-0 text-[22px] leading-[1.2] font-extrabold lg:text-[30px]">
+      <div className="mx-auto flex max-w-[1440px] max-lg:max-w-[640px] flex-col gap-7 px-4 py-12 lg:flex-row lg:gap-12 xl:gap-20 lg:px-[min(5.56vw,80px)] lg:py-[72px]">
+        <div className="na-olive flex flex-col gap-3 self-start rounded-[20px] bg-oliva p-6 text-krem lg:w-[40%] xl:w-[480px] lg:shrink-0 lg:gap-4 lg:rounded-[22px] lg:p-9">
+          <h2 className="m-0 text-[22px] leading-[1.2] font-extrabold lg:text-[30px]">
             Как проходит первая встреча
           </h2>
-          <p className="relative m-0 mb-[124px] text-[15px] leading-[1.55] text-abzac-oliva lg:mb-[130px] lg:max-w-[360px] lg:text-[17px] lg:leading-[1.6]">
+          <p className="m-0 text-[15px] leading-[1.55] text-abzac-oliva lg:text-[17px] lg:leading-[1.6]">
             На первой встрече мы знакомимся. Вы рассказываете, что происходит, я
             слушаю и спрашиваю. В конце говорю, как вижу вашу ситуацию: с чем
             здесь можно работать и чем может быть полезна терапия. Дальше
