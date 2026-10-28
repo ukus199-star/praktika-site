@@ -45,7 +45,7 @@ export function KakYaRabotayu() {
               появляется выбор - и силы можно направить на другое.
             </p>
             <p className="my-2 text-2xl leading-tight font-extrabold text-oliva lg:text-[30px] lg:leading-[1.25]">
-              Там, где раньше был привычный сценарий, появляется выбор.
+              Там, где раньше был привычный сценарий, появляется выбор
             </p>
             <h3 className="m-0 mt-3 text-[22px] font-extrabold lg:text-[26px]">
               Путь, который проходите вы
