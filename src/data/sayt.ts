@@ -4,7 +4,8 @@
 
 /** Цены. Источник - business/life-metrics.md, метрики «Цена первой встречи»,
  *  «Цена очной встречи», «Цена пакета из 4 сессий», «Цена супервизии». Меняются там - меняются
- *  здесь, и только здесь. */
+ *  здесь, и только здесь. Цены зашиты и в PDF контракта (public/kontrakt.pdf):
+ *  после правки - bash scripts/kontrakt-pdf.sh. */
 export const CENY = {
   onlayn: { vstrecha: 5000, paket: 19000 },
   ochno: { vstrecha: 6000, paket: 22000 },

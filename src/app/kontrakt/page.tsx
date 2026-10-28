@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CENY, rubli } from "@/data/sayt";
+import { Knopki } from "./Knopki";
 
 // Психотерапевтический контракт. Ссылка на него - в карточке «Как проходит
 // первая встреча» (`src/components/Voprosy.tsx`).
@@ -97,17 +98,22 @@ function Stroka({ podpis, posle, shirina = "flex-1" }: { podpis: string; posle?:
 export default function Kontrakt() {
   return (
     <main className="mx-auto w-full max-w-[760px] px-4 py-6 lg:py-12">
-      <Link href="/" className="text-base font-bold text-oliva no-underline lg:text-lg">
+      <Link href="/" className="text-base font-bold text-oliva no-underline lg:text-lg print:hidden">
         Ульяна Кустова
       </Link>
 
-      <p className="mt-8 mb-2 text-sm font-semibold tracking-[0.08em] text-podpis uppercase">
+      {/* Только на печати и в PDF: на бумаге должно быть видно, чей контракт. */}
+      <p className="m-0 mb-8 hidden text-sm text-podpis print:block">
+        Ульяна Кустова, гештальт-терапевт · kustova-psy.ru
+      </p>
+      <p className="mt-8 mb-2 print:mt-0 text-sm font-semibold tracking-[0.08em] text-podpis uppercase">
         Психотерапевтический контракт
       </p>
       <h1 className="m-0 mb-6 text-[28px] leading-[1.15] font-extrabold lg:text-[40px]">
         Контракт на долгосрочную терапию
       </h1>
-      <p className="m-0 mb-10 text-base leading-[1.6] text-abzac lg:text-[17px]">{VSTUPLENIE}</p>
+      <p className="m-0 mb-6 text-base leading-[1.6] text-abzac lg:text-[17px]">{VSTUPLENIE}</p>
+      <Knopki />
 
       <div className="flex flex-col gap-10">
         {RAZDELY.map((r) => (
@@ -121,7 +127,7 @@ export default function Kontrakt() {
             )}
             <ol className="m-0 flex list-none flex-col gap-4 p-0">
               {r.punkty.map(([nomer, tekst]) => (
-                <li key={nomer} className="grid grid-cols-[2.75rem_1fr] text-base leading-[1.6] text-abzac lg:text-[17px]">
+                <li key={nomer} className="break-inside-avoid grid grid-cols-[2.75rem_1fr] text-base leading-[1.6] text-abzac lg:text-[17px]">
                   <span className="font-bold text-oliva tabular-nums">{nomer}</span>
                   <span>{tekst}</span>
                 </li>
@@ -131,7 +137,7 @@ export default function Kontrakt() {
         ))}
       </div>
 
-      <div className="mt-12 flex flex-col gap-6 rounded-[20px] bg-kartochka p-6 text-base text-tekst lg:p-9 lg:text-[17px]">
+      <div className="mt-12 flex flex-col gap-6 break-inside-avoid rounded-[20px] bg-kartochka p-6 text-base text-tekst lg:p-9 lg:text-[17px] print:border print:border-ramka print:bg-transparent">
         <Stroka podpis="Я," posle="даю свое согласие на психотерапию" />
         <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
           <Stroka podpis="Число" shirina="flex-1 sm:w-40 sm:flex-none" />

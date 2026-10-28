@@ -84,3 +84,14 @@ body {
 .bez-polosy::-webkit-scrollbar {
   display: none;
 }
+
+/* Печать и PDF контракта (/kontrakt): белый лист вместо крема, поля как у
+   документа. Кнопки и ссылка на главную прячутся классом print:hidden. */
+@page {
+  margin: 18mm 16mm;
+}
+@media print {
+  body {
+    background: #fff;
+  }
+}
